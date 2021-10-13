@@ -1,0 +1,23 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: Gateway
+  cloud:
+    gateway:
+      routes:
+        - id: orderService
+          uri: lb://Order-Service
+          predicates:
+            - Path=/orders/**
+
+        - id: itemService
+          uri: lb://Item-Service
+          predicates:
+            - Path=/items/**
+
+        - id: customerService
+          uri: lb://Customer-Service
+          predicates:
+            - Path=/customers/**

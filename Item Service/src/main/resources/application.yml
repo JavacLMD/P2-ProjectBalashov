@@ -1,0 +1,13 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: Item-Service
+  data:
+    cassandra:
+      keyspace-name: scifi
+      contact-points: localhost
+      port: 9042
+      local-datacenter: datacenter1
+      schema-action: CREATE_IF_NOT_EXISTS
