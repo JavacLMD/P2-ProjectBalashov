@@ -26,16 +26,16 @@ public class ItemService{
         return itemRepository.findAll();
     }
 
-    public Mono<Item> findById( int id) {
+    public Mono<Item> findById(int id) {
         return itemRepository.findById(id);
     }
 
-    public Flux<Item> findByCategory( String category) {
-        return itemRepository.findByCategory(category);
+    public Flux<Item> findByCategory(String category) {
+        return itemRepository.findByCategory(category.toLowerCase());
     }
 
-    public Flux<Item> findByName( String name) {
-        return itemRepository.findByName(name);
+    public Flux<Item> findByName(String name) {
+        return itemRepository.findByName(name.toLowerCase());
     }
 
     public Mono<Item> save(Item item) {
@@ -45,7 +45,6 @@ public class ItemService{
     }
 
     public Mono<Item> saveOrUpdate(Item item) {
-
         return  findById(item.getId())
                 .log()
                 .flatMap(foundItem -> {

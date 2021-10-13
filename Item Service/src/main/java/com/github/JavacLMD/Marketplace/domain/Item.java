@@ -33,6 +33,7 @@ public class Item implements Serializable {
         this.name = name;
         this.price = price;
         this.category = category;
+        this.category.forEach(x -> x = x.toLowerCase());
     }
 
     public Item(int item_id, String name, double price, String ...category) {
