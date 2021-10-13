@@ -1,6 +1,7 @@
 package com.github.JavacLMD.Marketplace.domain;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.Data;
 import org.springframework.data.cassandra.core.cql.PrimaryKeyType;
 import org.springframework.data.cassandra.core.mapping.Column;
 import org.springframework.data.cassandra.core.mapping.PrimaryKey;
@@ -11,6 +12,7 @@ import java.io.Serializable;
 import java.util.*;
 
 @Table("items")
+@Data
 public class Item implements Serializable {
 
     @PrimaryKeyColumn(name = "item_id", type = PrimaryKeyType.PARTITIONED)
@@ -37,37 +39,6 @@ public class Item implements Serializable {
         this(item_id, name, price, new HashSet<>(Arrays.asList(category)));
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
-    public Set<String> getCategory() {
-        return category;
-    }
-
-    public void setCategory(Set<String> category) {
-        this.category = category;
-    }
 
     @Override
     public boolean equals(Object o) {

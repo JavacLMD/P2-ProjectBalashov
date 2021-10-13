@@ -1,9 +1,9 @@
 server:
-  port: 8082
+  port: 8086
 
 spring:
   application:
-    name: Order-Service
+    name: Customer-Service
   data:
     cassandra:
       keyspace-name: scifi

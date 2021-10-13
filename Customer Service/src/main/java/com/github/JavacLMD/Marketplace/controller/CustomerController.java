@@ -1,5 +1,7 @@
-package com.github.JavacLMD.Marketplace;
+package com.github.JavacLMD.Marketplace.controller;
 
+import com.github.JavacLMD.Marketplace.service.CustomerService;
+import com.github.JavacLMD.Marketplace.domain.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
@@ -19,26 +21,26 @@ public class CustomerController {
 
     @GetMapping("")
     public Flux<Customer> findAll() {
-        return customerService.getAllCustomers().log();
+        return customerService.findAllCustomers().log();
+    }
+
+    @PostMapping("")
+    public Mono<Customer> createCustomer(@RequestBody Customer customer) {
+        return customerService.createCustomer(customer);
     }
 
     @GetMapping("/{id}")
     public Mono<Customer> findById(@PathVariable int id) {
-        return customerService.getCustomerById(id).log();
-    }
-
-    @PostMapping("")
-    public Customer createCustomer(@RequestBody Customer customer) {
-        return customerService.createCustomer(customer);
+        return customerService.findCustomerById(id).log();
     }
 
     @PutMapping("/deposit/{customer}")
-    public Mono<Boolean> deposit(@PathVariable int customer, @RequestBody double amt) {
-        return customerService.deposit(customer, amt).log();
+    public Mono<Customer> deposit(@PathVariable int id, @RequestBody double amt) {
+        return customerService.deposit(id, amt).log();
     }
 
     @PutMapping("/withdraw/{customer}")
-    public Mono<Boolean> withdraw(@PathVariable int customer, @RequestBody double amt) {
-        return customerService.withdraw(customer, amt).log();
+    public Mono<Customer> withdraw(@PathVariable int id, @RequestBody double amt) {
+        return customerService.withdraw(id, amt).log();
     }
 }

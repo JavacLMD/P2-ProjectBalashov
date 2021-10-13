@@ -10,20 +10,18 @@ import java.util.Random;
 
 @Table
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
 public class Orders  {
 
     @PrimaryKeyColumn(value = "orderId", type = PrimaryKeyType.PARTITIONED)
-    private @Getter @Setter  int orderId;
+    private int orderId;
 
     @PrimaryKeyColumn(value = "customer_id", type = PrimaryKeyType.CLUSTERED)
-    private @Getter @Setter int id;
+    private int id;
 
     @Column
-    private @Getter @Setter int item_id;
+    private int item_id;
     @Column
-    private @Getter @Setter double price;
+    private double price;
 
 }
 

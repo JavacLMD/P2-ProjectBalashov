@@ -1,4 +1,4 @@
-package com.sakuramatrix.microservicesezin.config;
+package com.github.JavacLMD.Marketplace.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
@@ -8,7 +8,6 @@ import org.springframework.data.cassandra.core.cql.keyspace.CreateKeyspaceSpecif
 import org.springframework.data.cassandra.core.cql.keyspace.KeyspaceOption;
 import org.springframework.data.cassandra.repository.config.EnableReactiveCassandraRepositories;
 
-import java.util.Arrays;
 import java.util.List;
 
 @Configuration

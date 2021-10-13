@@ -1,14 +1,12 @@
 package com.sakuramatrix.microservicesezin.controller;
 
 import com.sakuramatrix.microservicesezin.domain.Orders;
-import com.sakuramatrix.microservicesezin.domain.Item;
 import com.sakuramatrix.microservicesezin.repository.OrdersRepository;
 import com.sakuramatrix.microservicesezin.service.OrdersService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.RestTemplate;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
@@ -27,14 +25,13 @@ public class OrdersController {
     @Autowired
     private OrdersRepository ordersRepository;
 
-
     @GetMapping("/{customer_id}")
     public Flux<Orders> findById(@PathVariable int customer_id) {
         log.info("Finding order by customer id");
         return ordersRepository.findById(customer_id);
     }
 
-    @GetMapping("/all")
+    @GetMapping("")
     public Flux<Orders> findAll() {
         log.info("Finding all orders ");
         return ordersRepository.findAll();
